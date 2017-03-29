@@ -5,9 +5,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Multiple Filter Demo</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <form action="servlet" method="GET">
+        	UserName: <input type="text" name="username"/><br>
+        	Password: <input type="password" name="password" /><br>
+        	
+        	<input type="submit" value="GO!">
+        </form>
     </body>
 </html>
