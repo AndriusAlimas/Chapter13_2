@@ -40,4 +40,16 @@
         	</jsp-property-group>
         </jsp-config>
         
+        <!-- we create servlet and servlet mapping: -->
+        <servlet>
+        	<servlet-name>MyMainServlet</servlet-name>
+        	<servlet-class>com.andrius.project.Chapter13_2.servlet.MainServlet</servlet-class>
+        </servlet>
+        
+        <servlet-mapping>
+        	<servlet-name>MyMainServlet</servlet-name>
+        	<url-pattern>/servlet</url-pattern>
+        </servlet-mapping>
+        
+        
     </web-app>
