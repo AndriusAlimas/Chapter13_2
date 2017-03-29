@@ -10,6 +10,28 @@
         	<role-name>Admin</role-name>
         </security-role>
         
+        <!--  ENABLE Authentication First using simple BASIC style -->
+        <login-config>
+        	<auth-method>
+        		BASIC
+        	</auth-method>
+        </login-config>
+        
+        <security-constraint>
+        	<web-resource-collection>
+        		<web-resource-name>MyCollection</web-resource-name>
+        		<url-pattern>/index.jsp</url-pattern>
+        		<http-method>GET</http-method>
+        		<http-method>POST</http-method>	
+        	</web-resource-collection>
+        	
+        	<!--  This saying that only admin can access throught GET POST method
+        	to web resource which is index.jsp this resource is contrained we define this way -->
+        	<auth-constraint>
+        		<role-name>Admin</role-name>
+        	</auth-constraint>
+        </security-constraint>
+        
         <jsp-config>
         	<jsp-property-group>
         		<url-pattern>*.jsp</url-pattern>
@@ -17,4 +39,5 @@
         		<scripting-invalid>false</scripting-invalid>
         	</jsp-property-group>
         </jsp-config>
+        
     </web-app>
