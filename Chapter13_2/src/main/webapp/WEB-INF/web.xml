@@ -51,5 +51,27 @@
         	<url-pattern>/servlet</url-pattern>
         </servlet-mapping>
         
+        <!--  Create Log Filter which will be the First Filter in the order of DD: -->
+        <filter>
+        	<filter-name>LogFilter</filter-name>
+        	<filter-class>com.andrius.project.Chapter13_2.filter.LogFilter</filter-class>
+        </filter>
         
+        <!-- LogFilter mapping: -->
+        <filter-mapping>
+        	<filter-name>LogFilter</filter-name>
+        	<url-pattern>/servlet</url-pattern>
+        </filter-mapping>
+        
+        <!-- Create  Authentication Filter will be second in the order of DD: -->
+        <filter>
+        	<filter-name>AuthFilter</filter-name>
+        	<filter-class>com.andrius.project.Chapter13_2.filter.AuthenticationFilter</filter-class>
+        </filter>
+        
+        <!-- Authentication Filter mapping: -->
+        <filter-mapping>
+        	<filter-name>AuthFilter</filter-name>
+        	<servlet-name>MyMainServlet</servlet-name>
+        </filter-mapping>
     </web-app>
