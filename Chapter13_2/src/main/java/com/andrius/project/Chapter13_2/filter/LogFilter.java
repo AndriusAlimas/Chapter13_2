@@ -8,22 +8,45 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 public class LogFilter implements Filter{
+	private FilterConfig config;
+	
+	public void init(FilterConfig config) throws ServletException {
+		this.config = config;
+		
+		System.out.println("-----------------------------------------");
+		System.out.println("init() method is called in " + this.getClass().getName());
+		System.out.println("-----------------------------------------");
+	}
+	
+	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
+			throws IOException, ServletException {
+		System.out.println("doFilter() method called in " + 
+			this.getClass().getName() + "\n\n");
+		
+		// cast to HttpServletRequest because we want use method from http request:
+		HttpServletRequest http_req = (HttpServletRequest)req;
+		
+		// get remote address of client machine:
+		String ipAddress = http_req.getRemoteAddr();
+		
+		// Log ip address and current timestamp:
+		System.out.println("IP: " + ipAddress + " , Time: " +
+		new Date().toString() + "\n\n");
+		
+		// if no more filter will send these object to servlet:
+		chain.doFilter(req, res);
+	}
 
 	public void destroy() {
 		// cleanup code
+		System.out.println("-----------------------------------------");
+		System.out.println("destroy() method called in " + this.getClass().getName());
+		System.out.println("-----------------------------------------");
 	}
 
-	public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2)
-			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
